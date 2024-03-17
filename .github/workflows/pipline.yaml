@@ -37,7 +37,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Pull Docker image
-      run: docker pull ait-app
+      run: docker pull bollae/ait-app
 
     - name: Run docker container
       run: |

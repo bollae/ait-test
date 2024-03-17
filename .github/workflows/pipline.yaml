@@ -1,6 +1,7 @@
  name: CI/CD Pipeline for app
 
-on: push
+on:
+   push:
     branches:
       - '*'
 jobs:

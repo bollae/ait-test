@@ -47,4 +47,4 @@ jobs:
 
     - name: Run docker container
       run: |
-        docker container run -d --name ait-app -p 8080:80 ait-app
+        docker container run -d --name bollae/ait-app -p 8080:80 bollae/ait-app

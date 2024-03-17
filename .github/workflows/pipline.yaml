@@ -1,0 +1,14 @@
+ name: CI/CD Pipeline for app
+
+on:
+  push:
+    branches:
+      - 'future-branch'
+jobs:
+    - name: Build Docker image
+      run: |
+         docker build -t app -f Containerfile . --no-cache
+    - name: Run docker container
+      run: |
+          docker container run app
+

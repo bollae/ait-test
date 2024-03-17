@@ -16,7 +16,15 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build -t app -f Containerfile . --no-cache
+        docker build -t ait-app -f Containerfile . --no-cache
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Push Docker image
+      run: docker push ait-app
 
   run:
     name: Run docker container
@@ -27,6 +35,9 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Pull Docker image
+      run: docker pull ait-app
+
     - name: Run docker container
       run: |
-        docker container run -d --name app -p 8080:80 app
+        docker container run -d --name ait-app -p 8080:80 ait-app
